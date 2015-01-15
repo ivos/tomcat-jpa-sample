@@ -1,0 +1,7 @@
+<!-- tomcat application context -->
+<Context>
+
+	<!-- h2 database -->
+	<ResourceLink name="jdbc/sample" global="jdbc_sample" type="javax.sql.DataSource" />
+
+</Context>

@@ -1,0 +1,15 @@
+<configuration scan="true">
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="debug">
+		<appender-ref ref="console" />
+	</root>
+
+	<logger name="com.github.ivos.tcjpa" level="trace" />
+
+</configuration>
