@@ -37,6 +37,7 @@ H2 in its [latest stable version 1.3.176](http://www.h2database.com/html/downloa
         maxActive="10" maxIdle="4" maxWait="10000" />
 </pre>
 5. Start Tomcat <kbd>startup.sh</kbd>.
+6. Verify the datasource is bound to the global JNDI <code>jdbc_sample</code>: [Tomcat global JNDI resources](http://localhost:8080/manager/text/resources).
 6. Execute <kbd>mvn clean package tomcat7:deploy</kbd> to build the war and deploy / re-deploy it to the running Tomcat server.
 7. Access the [home page](http://localhost:8080/tomcat-jpa-sample/).
 
