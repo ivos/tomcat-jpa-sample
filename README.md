@@ -27,7 +27,7 @@ H2 in its [latest stable version 1.3.176](http://www.h2database.com/html/downloa
   &lt;role rolename="manager-script"/>
   &lt;user username="admin" password="" roles="manager-gui,manager-script"/>
 </pre>
-3. Copy the h2-1.3.176.jar to lib/ directory.
+3. Copy the h2-1.3.176.jar to <code>lib/</code> directory.
 4. Configure the <code>conf/server.xml</code>, find the <code>&lt;GlobalNamingResources></code> and insert into it:
 <pre>
     &lt;!-- sample h2 database -->
@@ -36,7 +36,7 @@ H2 in its [latest stable version 1.3.176](http://www.h2database.com/html/downloa
         url="jdbc:h2:~/data/sample/sample;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE;MVCC=TRUE"
         maxActive="10" maxIdle="4" maxWait="10000" />
 </pre>
-5. Run it on default port 8080.
+5. Start Tomcat <kbd>startup.sh</kbd>.
 6. Execute <kbd>mvn clean package tomcat7:deploy</kbd> to build the war and deploy / re-deploy it to the running Tomcat server.
 7. Access the [home page](http://localhost:8080/tomcat-jpa-sample/).
 
