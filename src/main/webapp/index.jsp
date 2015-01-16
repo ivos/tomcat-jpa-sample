@@ -1,7 +1,8 @@
-<%@page import="java.util.List"%>
-<%@page import="javax.naming.*,java.sql.*,javax.sql.DataSource"%>
+<%@page import="java.util.*,javax.inject.Inject,javax.naming.*"%>
+<%@page import="java.sql.*,javax.sql.DataSource"%>
 <%@page import="javax.persistence.*,com.github.ivos.tcjpa.*"%>
 <%@page contentType="text/html;charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String dbStatusLabelClass = "label-danger";
 	String dbTitle = "";
@@ -42,58 +43,40 @@
 			<span class="label <%=dbStatusLabelClass%>" title="<%=dbTitle%>">DB</span>
 		</p>
 
-		<%
-			EntityManagerFactory emf = Persistence
-					.createEntityManagerFactory("sample");
-		%>
 		<div class="panel-group" id="emf" role="tablist" aria-multiselectable="true">
 			<div class="panel panel-default">
 				<div class="panel-heading" role="tab" id="headingEmf1">
 					<h4 class="panel-title">
 						<a data-toggle="collapse" data-parent="#emf" href="#emf1"
-							aria-expanded="true" aria-controls="collapseOne">EMF: <%=emf%></a>
+							aria-expanded="true" aria-controls="collapseOne">EMF:
+							${sampleService.emf}</a>
 					</h4>
 				</div>
 				<div id="emf1" class="panel-collapse collapse" role="tabpanel"
 					aria-labelledby="headingEmf1">
 					<div class="panel-body">
-						<pre><%=emf.getProperties()%></pre>
+						<pre>${sampleService.emf.properties}</pre>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<%
-			EntityManager em = emf.createEntityManager();
-			em.getTransaction().begin();
-			Sample newSample = new Sample();
-			em.persist(newSample);
-			em.getTransaction().commit();
-
-			List<Sample> samples = em.createQuery("select s from Sample s",
-					Sample.class).getResultList();
-		%>
+		${sampleService.createSample()}
 
 		<table class="table table-bordered table-hover table-condensed">
 			<tr>
 				<th>Id</th>
 				<th>Value</th>
 			</tr>
-			<%
-				for (Sample sample : samples) {
-			%>
-			<tr>
-				<td><%=sample.getId()%></td>
-				<td><%=sample.getValue()%></td>
-			</tr>
-			<%
-				}
-			%>
+			<c:forEach var="sample" items='${sampleService.samples}'>
+				<tr>
+					<td>${sample.id}</td>
+					<td>${sample.value}</td>
+				</tr>
+			</c:forEach>
 		</table>
 
-		<%
-			em.close();
-		%>
+		${sampleService.close()}
 
 		<hr />
 

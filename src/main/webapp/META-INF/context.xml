@@ -1,6 +1,10 @@
 <!-- tomcat application context -->
 <Context>
 
+	<!-- enable cdi -->
+	<Resource name="BeanManager" auth="Container" type="javax.enterprise.inject.spi.BeanManager"
+		factory="org.jboss.weld.resources.ManagerObjectFactory" />
+
 	<!-- h2 database -->
 	<ResourceLink name="jdbc/sample" global="jdbc_sample" type="javax.sql.DataSource" />
 
