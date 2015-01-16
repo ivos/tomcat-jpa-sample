@@ -76,8 +76,6 @@
 			</c:forEach>
 		</table>
 
-		${sampleService.close()}
-
 		<hr />
 
 	</div>

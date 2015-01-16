@@ -8,6 +8,8 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
+import org.apache.deltaspike.jpa.api.transaction.Transactional;
+
 @RequestScoped
 @Named("sampleService")
 public class SampleService {
@@ -19,23 +21,16 @@ public class SampleService {
 		return em.getEntityManagerFactory();
 	}
 
+	@Transactional
 	public void createSample() {
-		em.getTransaction().begin();
 		Sample newSample = new Sample();
 		em.persist(newSample);
-		em.getTransaction().commit();
 	}
 
+	@Transactional(readOnly = true)
 	public List<Sample> getSamples() {
-		em.getTransaction().begin();
-		List<Sample> samples = em.createQuery("select s from Sample s",
-				Sample.class).getResultList();
-		em.getTransaction().commit();
-		return samples;
-	}
-
-	public void close() {
-		em.close();
+		return em.createQuery("select s from Sample s", Sample.class)
+				.getResultList();
 	}
 
 }
