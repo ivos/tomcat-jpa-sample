@@ -2,30 +2,24 @@ package com.github.ivos.tcjpa;
 
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
-@ApplicationScoped
+@RequestScoped
 @Named("sampleService")
 public class SampleService {
 
-	private EntityManagerFactory emf;
-
+	@Inject
 	private EntityManager em;
 
-	public SampleService() {
-		emf = Persistence.createEntityManagerFactory("sample");
-	}
-
 	public EntityManagerFactory getEmf() {
-		return emf;
+		return em.getEntityManagerFactory();
 	}
 
 	public void createSample() {
-		em = emf.createEntityManager();
 		em.getTransaction().begin();
 		Sample newSample = new Sample();
 		em.persist(newSample);
