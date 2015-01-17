@@ -1,6 +1,4 @@
-package com.github.ivos.tcjpa;
-
-import java.util.Random;
+package com.github.ivos.tcjpa.persistence;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +9,9 @@ import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.apache.commons.lang.RandomStringUtils;
-
+/**
+ * Sample entity.
+ */
 @Entity
 @SequenceGenerator(name = "sample_seq", sequenceName = "sample_seq", allocationSize = 1)
 public class Sample {
@@ -29,8 +28,6 @@ public class Sample {
 	private String value;
 
 	public Sample() {
-		value = RandomStringUtils
-				.randomAlphabetic(5 + new Random().nextInt(15));
 	}
 
 	public Long getId() {

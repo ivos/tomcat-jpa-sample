@@ -62,4 +62,4 @@ which implies:
 
 ## Database create table sql script generation
 
-Execute <kbd>mvn -Pdb</kbd> to (re-)generate create table sql script in setup/sql/tomcat-jpa-sample-schema-generated.ddl file.
+Execute <kbd>mvn -Pdb</kbd> to (re-)generate create table sql script in <code>setup/sql/tomcat-jpa-sample-schema-generated.ddl</code> file.

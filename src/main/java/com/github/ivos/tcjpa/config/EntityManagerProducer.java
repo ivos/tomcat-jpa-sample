@@ -1,4 +1,4 @@
-package com.github.ivos.tcjpa;
+package com.github.ivos.tcjpa.config;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Disposes;
@@ -9,6 +9,12 @@ import javax.persistence.Persistence;
 
 import org.apache.deltaspike.jpa.api.transaction.TransactionScoped;
 
+/**
+ * Entity manager producer.
+ * <p>
+ * Creates transaction-scoped {@link EntityManager} in a non-JEE environment,
+ * like Tomcat.
+ */
 @ApplicationScoped
 public class EntityManagerProducer {
 
@@ -30,6 +36,11 @@ public class EntityManagerProducer {
 		if (em.isOpen()) {
 			em.close();
 		}
+	}
+
+	// Remove this method in a standard project
+	public EntityManagerFactory getEmf() {
+		return emf;
 	}
 
 }

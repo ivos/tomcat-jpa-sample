@@ -1,6 +1,5 @@
 <%@page import="java.util.*,javax.inject.Inject,javax.naming.*"%>
 <%@page import="java.sql.*,javax.sql.DataSource"%>
-<%@page import="javax.persistence.*,com.github.ivos.tcjpa.*"%>
 <%@page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -49,13 +48,13 @@
 					<h4 class="panel-title">
 						<a data-toggle="collapse" data-parent="#emf" href="#emf1"
 							aria-expanded="true" aria-controls="collapseOne">EMF:
-							${sampleService.emf}</a>
+							${entityManagerBean.emf}</a>
 					</h4>
 				</div>
 				<div id="emf1" class="panel-collapse collapse" role="tabpanel"
 					aria-labelledby="headingEmf1">
 					<div class="panel-body">
-						<pre>${sampleService.emf.properties}</pre>
+						<pre>${entityManagerBean.emf.properties}</pre>
 					</div>
 				</div>
 			</div>

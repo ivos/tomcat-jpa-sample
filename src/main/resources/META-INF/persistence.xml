@@ -8,9 +8,6 @@
 		<description>Sample Persistence Unit</description>
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<non-jta-data-source>java:/comp/env/jdbc/sample</non-jta-data-source>
-		<class>com.github.ivos.tcjpa.Sample</class>
-		<!-- -->
-		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="false" />
