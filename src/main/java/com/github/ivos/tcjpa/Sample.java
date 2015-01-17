@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.apache.commons.lang.RandomStringUtils;
@@ -23,6 +24,7 @@ public class Sample {
 	@Version
 	private long version;
 
+	@NotNull
 	@Size(max = 100)
 	private String value;
 

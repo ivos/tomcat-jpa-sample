@@ -76,6 +76,10 @@
 			</c:forEach>
 		</table>
 
+		<div class="alert alert-info" role="alert">
+			<strong>Refresh</strong> the page to create new sample value.
+		</div>
+
 		<hr />
 
 	</div>

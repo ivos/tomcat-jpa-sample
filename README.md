@@ -18,6 +18,24 @@ Java 1.7.0_67.
 
 H2 in its [latest stable version 1.3.176](http://www.h2database.com/html/download.html).
 
+JPA provider [Hibernate](http://hibernate.org/orm/) in its [latest stable version 4.3.8.Final](http://hibernate.org/orm/downloads/),
+which implies:
+- JPA 2.1
+
+Bean Validation provider [Hibernate Validator](http://hibernate.org/validator/)
+in its [latest stable version 5.1.3.Final](http://hibernate.org/validator/downloads/).
+
+CDI provider [Weld](http://weld.cdi-spec.org/) in its latest current version 2.2.8.Final.
+which implies:
+- CDI 1.2
+
+[DeltaSpike](https://deltaspike.apache.org/) for CDI extensions:
+
+- [JPA Module](https://deltaspike.apache.org/documentation/jpa.html) for <strong>declarative transactions</strong>.
+- [Data Module](https://deltaspike.apache.org/documentation/data.html) as a <code>@Repository</code> pattern provider.
+
+[Juplo Hibernate 4 Maven plugin](http://juplo.de/hibernate4-maven-plugin/) to <strong>generate create table sql script</strong>.
+
 ## Running locally
 
 1. Install standalone Tomcat.
@@ -38,7 +56,10 @@ H2 in its [latest stable version 1.3.176](http://www.h2database.com/html/downloa
 </pre>
 5. Start Tomcat <kbd>startup.sh</kbd>.
 6. Verify the datasource is bound to the global JNDI <code>jdbc_sample</code>: [Tomcat global JNDI resources](http://localhost:8080/manager/text/resources).
-6. Execute <kbd>mvn clean package tomcat7:deploy</kbd> to build the war and deploy / re-deploy it to the running Tomcat server.
-7. Access the [home page](http://localhost:8080/tomcat-jpa-sample/).
+7. Execute <kbd>mvn</kbd> to build the war and deploy / re-deploy it to the running Tomcat server.
+8. Access the [home page](http://localhost:8080/tomcat-jpa-sample/).
+9. Refresh the home page repeatedly to get new sample values generated.
 
-On each refresh of the home page a new sample value is generated.
+## Database create table sql script generation
+
+Execute <kbd>mvn -Pdb</kbd> to (re-)generate create table sql script in setup/sql/tomcat-jpa-sample-schema-generated.ddl file.
