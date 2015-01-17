@@ -12,6 +12,7 @@ import org.apache.deltaspike.jpa.api.transaction.Transactional;
 
 @RequestScoped
 @Named("sampleService")
+@Transactional
 public class SampleService {
 
 	@Inject
@@ -21,13 +22,11 @@ public class SampleService {
 		return em.getEntityManagerFactory();
 	}
 
-	@Transactional
 	public void createSample() {
 		Sample newSample = new Sample();
 		em.persist(newSample);
 	}
 
-	@Transactional(readOnly = true)
 	public List<Sample> getSamples() {
 		return em.createQuery("select s from Sample s", Sample.class)
 				.getResultList();
