@@ -34,7 +34,9 @@ which implies:
 - [JPA Module](https://deltaspike.apache.org/documentation/jpa.html) for <strong>declarative transactions</strong>.
 - [Data Module](https://deltaspike.apache.org/documentation/data.html) as a <code>@Repository</code> pattern provider.
 
+<!--
 [Juplo Hibernate 4 Maven plugin](http://juplo.de/hibernate4-maven-plugin/) to <strong>generate create table sql script</strong>.
+-->
 
 ## Running locally
 
@@ -62,4 +64,11 @@ which implies:
 
 ## Database create table sql script generation
 
+Shutdown Tomcat <kbd>shutdown.sh</kbd> and execute <kbd>db-save.sh</kbd> to backup the database
+into the <code>setup/sql/tomcat-jpa-sample-schema-generated.ddl</code> file.
+
+Tweak the contents as required. (Remove inserts, name the primary key constraints, etc.)
+
+<!--
 Execute <kbd>mvn -Pdb</kbd> to (re-)generate create table sql script in <code>setup/sql/tomcat-jpa-sample-schema-generated.ddl</code> file.
+-->
