@@ -52,6 +52,27 @@
 			<version>2.6</version>
 		</dependency>
 
+		<!-- cdi -->
+		<dependency>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet-core</artifactId>
+			<version>2.2.8.Final</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.weld</groupId>
+			<artifactId>weld-core</artifactId>
+			<version>2.2.8.Final</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- jandex is required by Hibernate, this newer version is then required by Weld -->
+		<dependency>
+			<groupId>org.jboss</groupId>
+			<artifactId>jandex</artifactId>
+			<version>1.2.2.Final</version>
+			<scope>runtime</scope>
+		</dependency>
+
 		<!-- persistence -->
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
@@ -76,38 +97,6 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.1.3.Final</version>
-			<scope>runtime</scope>
-		</dependency>
-
-		<!-- cdi -->
-		<dependency>
-			<groupId>org.jboss.weld.servlet</groupId>
-			<artifactId>weld-servlet-core</artifactId>
-			<version>2.2.8.Final</version>
-			<scope>runtime</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>jboss-el-api_3.0_spec</artifactId>
-					<groupId>org.jboss.spec.javax.el</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.weld</groupId>
-			<artifactId>weld-core</artifactId>
-			<version>2.2.8.Final</version>
-			<scope>runtime</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>jboss-el-api_3.0_spec</artifactId>
-					<groupId>org.jboss.spec.javax.el</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss</groupId>
-			<artifactId>jandex</artifactId>
-			<version>1.2.2.Final</version>
 			<scope>runtime</scope>
 		</dependency>
 

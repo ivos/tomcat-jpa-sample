@@ -12,4 +12,7 @@
 
 	<logger name="com.github.ivos.tcjpa" level="trace" />
 
+	<!-- DO NOT EVER set Weld to trace, as it will throw NumberFormatException because of jandex -->
+	<!-- <logger name="org.jboss.weld" level="trace" /> -->
+
 </configuration>
