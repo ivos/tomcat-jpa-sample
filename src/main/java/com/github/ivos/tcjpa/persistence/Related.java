@@ -1,28 +1,23 @@
 package com.github.ivos.tcjpa.persistence;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
- * Sample entity.
+ * Related entity.
  */
 @Entity
-@SequenceGenerator(name = "sample_seq", sequenceName = "sample_seq", allocationSize = 1)
-public class Sample {
+@SequenceGenerator(name = "related_seq", sequenceName = "related_seq", allocationSize = 1)
+public class Related {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sample_seq")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "related_seq")
 	private Long id;
 
 	@Version
@@ -32,13 +27,7 @@ public class Sample {
 	@Size(max = 100)
 	private String value;
 
-	@NotNull
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(foreignKey = @ForeignKey(name = "sample__related"))
-	@Valid
-	private Related related;
-
-	public Sample() {
+	public Related() {
 	}
 
 	public Long getId() {
@@ -65,14 +54,6 @@ public class Sample {
 		this.value = value;
 	}
 
-	public Related getRelated() {
-		return related;
-	}
-
-	public void setRelated(Related related) {
-		this.related = related;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -89,7 +70,7 @@ public class Sample {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Sample other = (Sample) obj;
+		Related other = (Related) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -100,8 +81,8 @@ public class Sample {
 
 	@Override
 	public String toString() {
-		return "Sample [id=" + id + ", version=" + version + ", value=" + value
-				+ "]";
+		return "Related [id=" + id + ", version=" + version + ", value="
+				+ value + "]";
 	}
 
 }

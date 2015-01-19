@@ -11,6 +11,7 @@ import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
 
+import com.github.ivos.tcjpa.persistence.Related;
 import com.github.ivos.tcjpa.persistence.Sample;
 import com.github.ivos.tcjpa.persistence.SampleRepository;
 
@@ -27,11 +28,18 @@ public class SampleService {
 
 	public void createSample() {
 		Sample sample = new Sample();
-		String random = StringUtils.capitalize(RandomStringUtils
-				.randomAlphabetic(3 + new Random().nextInt(12)).toLowerCase());
-		sample.setValue(random);
+		sample.setValue(generateText());
+
+		Related related = new Related();
+		related.setValue(generateText());
+		sample.setRelated(related);
 
 		sampleRepository.save(sample);
+	}
+
+	private String generateText() {
+		return StringUtils.capitalize(RandomStringUtils.randomAlphabetic(
+				3 + new Random().nextInt(12)).toLowerCase());
 	}
 
 	public List<Sample> getSamples() {

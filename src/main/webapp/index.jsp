@@ -66,11 +66,13 @@
 			<tr>
 				<th>Id</th>
 				<th>Value</th>
+				<th>Related</th>
 			</tr>
 			<c:forEach var="sample" items='${sampleService.samples}'>
 				<tr>
 					<td>${sample.id}</td>
 					<td>${sample.value}</td>
+					<td>${sample.related.value}</td>
 				</tr>
 			</c:forEach>
 		</table>
