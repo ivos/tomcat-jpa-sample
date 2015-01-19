@@ -65,30 +65,24 @@
 			<version>2.2.8.Final</version>
 			<scope>runtime</scope>
 		</dependency>
-		<!-- jandex is required by Hibernate, this newer version is then required by Weld -->
-		<dependency>
-			<groupId>org.jboss</groupId>
-			<artifactId>jandex</artifactId>
-			<version>1.2.2.Final</version>
-			<scope>runtime</scope>
-		</dependency>
 
 		<!-- persistence -->
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
 			<version>1.0.0.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.3.8.Final</version>
-			<scope>runtime</scope>
+			<version>4.2.17.Final</version>
+			<!-- required compile for @ForeignKey -->
+			<!-- <scope>runtime</scope> -->
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>4.3.8.Final</version>
+			<version>4.2.17.Final</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -181,16 +175,6 @@
 							<groupId>com.h2database</groupId>
 							<artifactId>h2</artifactId>
 							<version>1.3.176</version>
-						</dependency>
-						<dependency>
-							<groupId>org.hibernate</groupId>
-							<artifactId>hibernate-entitymanager</artifactId>
-							<version>4.3.8.Final</version>
-						</dependency>
-						<dependency>
-							<groupId>org.hibernate</groupId>
-							<artifactId>hibernate-core</artifactId>
-							<version>4.3.8.Final</version>
 						</dependency>
 					</dependencies>
 				</plugin>

@@ -1,16 +1,35 @@
-CREATE SEQUENCE PUBLIC.SAMPLE_SEQ START WITH 1;
-CREATE SEQUENCE PUBLIC.RELATED_SEQ START WITH 1;
-CREATE CACHED TABLE PUBLIC.RELATED(
-    ID BIGINT NOT NULL,
-    VALUE VARCHAR(100) NOT NULL,
-    VERSION BIGINT NOT NULL
-);
-ALTER TABLE PUBLIC.RELATED ADD CONSTRAINT PUBLIC.RELATED_PK PRIMARY KEY(ID);
-CREATE CACHED TABLE PUBLIC.SAMPLE(
-    ID BIGINT NOT NULL,
-    VALUE VARCHAR(100) NOT NULL,
-    VERSION BIGINT NOT NULL,
-    RELATED BIGINT NOT NULL
-);
-ALTER TABLE PUBLIC.SAMPLE ADD CONSTRAINT PUBLIC.SAMPLE_PK PRIMARY KEY(ID);
-ALTER TABLE PUBLIC.SAMPLE ADD CONSTRAINT PUBLIC.SAMPLE__RELATED FOREIGN KEY(RELATED) REFERENCES PUBLIC.RELATED(ID);
+
+    alter table sample 
+        drop constraint sample__related if exists;
+
+    drop table related if exists;
+
+    drop table sample if exists;
+
+    drop sequence related_seq;
+
+    drop sequence sample_seq;
+
+    create table related (
+        id bigint not null,
+        value varchar(100) not null,
+        version bigint not null,
+        primary key (id)
+    );
+
+    create table sample (
+        id bigint not null,
+        value varchar(100) not null,
+        version bigint not null,
+        related bigint not null,
+        primary key (id)
+    );
+
+    alter table sample 
+        add constraint sample__related 
+        foreign key (related) 
+        references related;
+
+    create sequence related_seq;
+
+    create sequence sample_seq;

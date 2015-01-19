@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 public class Related {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "related_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "related_seq")
 	private Long id;
 
 	@Version

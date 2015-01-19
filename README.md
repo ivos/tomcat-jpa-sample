@@ -18,9 +18,17 @@ Java 1.7.0_67.
 
 H2 in its [latest stable version 1.3.176](http://www.h2database.com/html/download.html).
 
-JPA provider [Hibernate](http://hibernate.org/orm/) in its [latest stable version 4.3.8.Final](http://hibernate.org/orm/downloads/),
+Hibernate 4.3 requires Jandex. Jandex is in turn detected by Weld as available on classpath and used.
+Jandex-related classes in Weld are then not compatible with slf4j, 
+they throw NumberFormatException as they try to push slf4j messages with "{}" possibly to JBoss logging
+which expects messages with "{0}" formatted for MessageFormat.
+This occurs on log level trace.
+
+Therefore Hibernate 4.2 is chosen.
+
+JPA provider [Hibernate 4.2](http://hibernate.org/orm/) in its [latest stable version 4.2.17.Final](http://hibernate.org/orm/downloads/),
 which implies:
-- JPA 2.1
+- JPA 2.0
 
 Bean Validation provider [Hibernate Validator](http://hibernate.org/validator/)
 in its [latest stable version 5.1.3.Final](http://hibernate.org/validator/downloads/).
@@ -34,9 +42,7 @@ which implies:
 - [JPA Module](https://deltaspike.apache.org/documentation/jpa.html) for <strong>declarative transactions</strong>.
 - [Data Module](https://deltaspike.apache.org/documentation/data.html) as a <code>@Repository</code> pattern provider.
 
-<!--
 [Juplo Hibernate 4 Maven plugin](http://juplo.de/hibernate4-maven-plugin/) to <strong>generate create table sql script</strong>.
--->
 
 ## Running locally
 
@@ -64,11 +70,4 @@ which implies:
 
 ## Database create table sql script generation
 
-Shutdown Tomcat <kbd>shutdown.sh</kbd> and execute <kbd>db-save.sh</kbd> to backup the database
-into the <code>setup/sql/tomcat-jpa-sample-schema-generated.ddl</code> file.
-
-Tweak the contents as required. (Remove inserts, name the primary key constraints, etc.)
-
-<!--
 Execute <kbd>mvn -Pdb</kbd> to (re-)generate create table sql script in <code>setup/sql/tomcat-jpa-sample-schema-generated.ddl</code> file.
--->
